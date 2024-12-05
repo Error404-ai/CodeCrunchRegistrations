@@ -1,8 +1,17 @@
-function validateAkgecEmail(email) {
+const fillMember2Button = document.getElementById('fillMember2');
+        const member2Form = document.getElementById('member2Form');
+        const submit = document.getElementById('submit');
+
+        fillMember2Button.addEventListener('click', () => {
+            member2Form.style.display = 'block';
+            fillMember2Button.style.display = 'none';
+            submit.style.display = 'block';
+        });
+        function validateAkgecEmail(email) {
     const regex = /(\d{7,8})/;
     const match = email.match(regex);
     if (!match) {
-        alert("No valid student number found in the email.");
+        alert("Enter your college email.");
         return false;
     }
     const studentNo = match[1];
@@ -32,7 +41,7 @@ function validateHackerrankId(id) {
 }
 
 function validateName(name) {
-    const nameRegex = /^[a-zA-Z]+$/;
+    const nameRegex = /^[a-zA-Z\s-]+$/;
     if (!nameRegex.test(name)) {
         alert("Name must have alphabets only.");
         return false;

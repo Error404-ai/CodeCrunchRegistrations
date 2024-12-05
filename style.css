@@ -16,10 +16,17 @@ body {
     padding: 20px;
 }
 
+.firstContainer select, .firstContainer input {
+    height: 48px; 
+    padding: 8px 12px;  
+    font-size: 1rem; 
+}
+
 .firstContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 10px; 
 }
 input, select {
     color: #ffffff !important;
