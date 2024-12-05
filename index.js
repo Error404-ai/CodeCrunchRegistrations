@@ -1,62 +1,85 @@
-
-const teamYear = document.getElementById('teamYear');
-const member1Fields = [
-    document.getElementById('member1Name'),
-    document.getElementById('member1Email'),
-    document.getElementById('member1Phone'),
-    document.getElementById('member1Hackerrank'),
-    document.getElementById('member1StudentNo'),
-    document.getElementById('member1Branch'),
-    document.getElementById('member1Residency'),
-    document.getElementById('member1Gender')
-];
-const member2Fields = [
-    document.getElementById('member2Name'),
-    document.getElementById('member2Email'),
-    document.getElementById('member2Phone'),
-    document.getElementById('member2Hackerrank'),
-    document.getElementById('member2StudentNo'),
-    document.getElementById('member2Branch'),
-    document.getElementById('member2Residency'),
-    document.getElementById('member2Gender')
-];
-const fillMember2Button = document.getElementById('fillMember2');
-const member2Form = document.getElementById('member2Form');
-const submitButton = document.querySelector('button[type="submit"]');
-
-fillMember2Button.style.display = 'none';
-submitButton.style.display = 'none';
-
-function checkMember1Fields() {
-    const allFilled = member1Fields.every(field => field.value.trim() !== '') && teamYear.value.trim() !== '';
-    fillMember2Button.style.display = allFilled ? 'block' : 'none';
-}
-function validateForm() {
-   
-    const isMember1Valid = member1Fields.every(field => field.checkValidity()) && teamYear.checkValidity();
-    
-    const isMember2Valid = member2Form.style.display === 'block' 
-        ? member2Fields.every(field => field.checkValidity()) 
-        : true;
-
-    if (isMember1Valid && isMember2Valid) {
-        return true;
-    } else {
-        alert('Please fill out all fields correctly.');
+function validateAkgecEmail(email) {
+    const regex = /(\d{7,8})/;
+    const match = email.match(regex);
+    if (!match) {
+        alert("No valid student number found in the email.");
         return false;
     }
+    const studentNo = match[1];
+    if (!(studentNo.startsWith("22") || studentNo.startsWith("23") || studentNo.startsWith("24"))) {
+        alert(`Invalid student number '${studentNo}'. Must start with 22, 23, or 24.`);
+        return false;
+    }
+    return true;
 }
-[...member1Fields, teamYear].forEach(field => {
-    field.addEventListener('input', checkMember1Fields);
-});
 
-fillMember2Button.addEventListener('click', () => {
-    member2Form.style.display = 'block';
-    fillMember2Button.style.display = 'none';
-    submitButton.style.display = 'block';
-});
+function validatePhone(phone) {
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+        alert("Phone number must be exactly 10 digits.");
+        return false;
+    }
+    return true;
+}
 
-document.getElementById('teamForm').addEventListener('submit', event => {
+function validateHackerrankId(id) {
+    const hackerrankRegex = /^[a-zA-Z0-9_.]+$/;
+    if (!hackerrankRegex.test(id)) {
+        alert("Invalid HackerRank ID.");
+        return false;
+    }
+    return true;
+}
+
+function validateName(name) {
+    const nameRegex = /^[a-zA-Z]+$/;
+    if (!nameRegex.test(name)) {
+        alert("Name must have alphabets only.");
+        return false;
+    }
+    return true;
+}
+
+function validateStudentNumber(studentNo) {
+    if (!(studentNo.startsWith("22") || studentNo.startsWith("23"))) {
+        alert("Student number must be valid (start with 22 or 23).");
+        return false;
+    }
+    return true;
+}
+
+function validateForm() {
+    const member1Email = document.getElementById('member1Email').value;
+    const member1Phone = document.getElementById('member1Phone').value;
+    const member1Hackerrank = document.getElementById('member1Hackerrank').value;
+    const member1Name = document.getElementById('member1Name').value;
+    const member1StudentNo = document.getElementById('member1StudentNo').value;
+
+    if (!validateAkgecEmail(member1Email)) return false;
+    if (!validatePhone(member1Phone)) return false;
+    if (!validateHackerrankId(member1Hackerrank)) return false;
+    if (!validateName(member1Name)) return false;
+    if (!validateStudentNumber(member1StudentNo)) return false;
+
+    const member2Form = document.getElementById('member2Form');
+    if (member2Form.style.display === 'block') {
+        const member2Email = document.getElementById('member2Email').value;
+        const member2Phone = document.getElementById('member2Phone').value;
+        const member2Hackerrank = document.getElementById('member2Hackerrank').value;
+        const member2Name = document.getElementById('member2Name').value;
+        const member2StudentNo = document.getElementById('member2StudentNo').value;
+
+        if (!validateAkgecEmail(member2Email)) return false;
+        if (!validatePhone(member2Phone)) return false;
+        if (!validateHackerrankId(member2Hackerrank)) return false;
+        if (!validateName(member2Name)) return false;
+        if (!validateStudentNumber(member2StudentNo)) return false;
+    }
+
+    return true;
+}
+
+document.getElementById('teamForm').addEventListener('submit', (event) => {
     event.preventDefault();
     if (validateForm()) {
         alert('Form submitted successfully!');
