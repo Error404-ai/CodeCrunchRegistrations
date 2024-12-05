@@ -1,0 +1,166 @@
+body {
+    background-image: url(background.jpg); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+.container {
+    max-width: 550px;
+    margin: 0 auto;
+    background-color:  #112842;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.firstContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+input, select {
+    color: #ffffff !important;
+    caret-color: #ffffff; 
+}
+
+input::placeholder, select::placeholder {
+    color: #aaa;
+    opacity: 0.7;
+}
+
+input:not(:placeholder-shown), 
+select:not(:placeholder-shown) {
+    color: #ffffff !important; 
+}
+
+input:focus, 
+select:focus {
+    color: #ffffff !important; 
+}
+
+input[type="number"] {
+    color: #ffffff !important;
+}
+
+select option {
+    color: black; 
+    background-color: white; 
+}
+
+#member2Form {
+    display: none;
+}
+
+.pcLogo {
+    width: 40px;
+    margin-right: 10px;
+}
+
+h1.pc {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.Logo {
+    display: flex;
+    justify-content: center;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], select {
+    background-color: transparent;
+    border: 1.5px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: #495057;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+select {
+    background-color: #7188a0;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus {
+    border-color: #316b9b;
+    background-color: transparent;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+select, input[type="number"] {
+    background-color: transparent !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1.5px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+input[type="number"]::placeholder, input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="tel"]::placeholder, select::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+select:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+button#fillMember2 {
+    background-color: rgb(27, 129, 172);
+    color: #ffffff;
+    border: none;
+}
+
+button[type="submit"] {
+    background-color: rgb(27, 129, 172);
+    color: #ffffff;
+    border: none;
+}
+
+button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+label {
+}
+
+input::placeholder {
+    color: gray;
+    opacity: 0.7;
+}
+
+select {
+    color: gray;
+}
+
+select option {
+    color: black;
+}
+
+select:invalid {
+    color: gray;
+}
+
+.firstContainer select, .firstContainer input {
+    height: 48px;
+}
