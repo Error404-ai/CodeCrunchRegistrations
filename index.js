@@ -83,5 +83,6 @@ document.getElementById('teamForm').addEventListener('submit', (event) => {
     event.preventDefault();
     if (validateForm()) {
         alert('Form submitted successfully!');
+        window.location.href = "success.html";
     }
 });
